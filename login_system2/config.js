@@ -11,7 +11,8 @@ let dbconfig = {
 let appconfig = {
     port: process.env.PORT,
     company:process.env.COMPANY,
-    author:process.env.AUTHOR
+    author:process.env.AUTHOR,
+    title:process.env.TITLE
 }
 
 module.exports = { dbconfig, appconfig }
