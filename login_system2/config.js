@@ -9,7 +9,9 @@ let dbconfig = {
 }
 
 let appconfig = {
-    port: process.env.PORT
+    port: process.env.PORT,
+    company:process.env.COMPANY,
+    author:process.env.AUTHOR
 }
 
 module.exports = { dbconfig, appconfig }
