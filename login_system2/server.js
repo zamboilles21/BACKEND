@@ -24,7 +24,7 @@ app.use(session({
 // PATHS
 
 app.get('/',(req,res)=>{
-    ejs.renderFile('views/index.ejs', (err,data)=>{
+    ejs.renderFile('views/index.ejs',{config}, (err,data)=>{
         if (err) {
             res.status(500).send(err);
         }else{
