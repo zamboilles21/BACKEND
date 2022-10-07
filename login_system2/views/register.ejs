@@ -1,0 +1,28 @@
+<%- include('header')  %> 
+            <h3>Register</h3>
+            <form method="post" action="/reg">
+                <div class="mb-3">
+
+                    <label for="username" class="form-label">name</label>
+                  <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                  <label for="useremail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="userpass1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="userpass1">
+                </div>
+                <div class="mb-3">
+                    <label for="userpass2" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="userpass2">
+                  </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Elfogadom hogy hulye vagyok</label>
+                </div>
+                <a class="btn btn-primary" href="/">Login</a>
+                <button type="submit" class="btn btn-primary" >submit</button>
+                
+              </form>
+<%- include('footer');  %>               
