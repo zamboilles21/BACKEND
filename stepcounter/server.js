@@ -18,12 +18,14 @@ const stepdataController=require('./controllers/stepdataController.js');
 
 
 app.use('/assets',express.static(path.join(__dirname+'assets')));
+app.use('/views',express.static(path.join(__dirname+'views')));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
 }));
+app.use('/', appController)
 app.use('/users',userController);
 app.use('/stepdatas',stepdataController);
 

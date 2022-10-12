@@ -5,9 +5,9 @@ const ejs=require('ejs');
 const config = require('../config.js');
 
 router.get('/',(req,res)=>{
-    ejs.renderFile('views/index.js', (data)=>{
+    ejs.renderFile('views/index.ejs',{app:config.appconfig}, (err,data)=>{
         res.send(data)
-    })
+    });
 });
 
 module.exports=router;
