@@ -10,4 +10,10 @@ router.get('/',(req,res)=>{
     });
 });
 
+router.get('/reg',(req,res)=>{
+    ejs.renderFile('views/registration.ejs',{app:config.appconfig}, (err,data)=>{
+        res.send(data)
+    });
+});
+
 module.exports=router;

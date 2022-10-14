@@ -1,0 +1,27 @@
+<%- include('header') %>
+
+<form action="/users/REG" method="post">
+    <div class="mb-3">
+      <label for="usermail" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="usermail" aria-describedby="emailHelp">
+      
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="username" aria-describedby="emailHelp">
+        
+      </div>
+    <div class="mb-3">
+      <label for="userpass" class="form-label">Password</label>
+      <input type="password" class="form-control" name="userpass">
+    </div>
+    <div class="mb-3">
+        <label for="userpass2" class="form-label">Password</label>
+        <input type="password" class="form-control" name="userpass2">
+      </div>
+   
+    <button type="submit" class="btn btn-primary">REG</button>
+    <a href="/" class="btn btn-secondary">LOGIN</a>
+  </form>
+
+        <%- include('footer') %>
