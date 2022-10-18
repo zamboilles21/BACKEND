@@ -15,5 +15,10 @@ router.get('/reg',(req,res)=>{
         res.send(data)
     });
 });
+router.get('/logout',(req,res)=>{
+    ejs.renderFile('views/index.ejs',{app:config.appconfig}, (err,data)=>{
+        res.send(data)
+    });
+});
 
 module.exports=router;

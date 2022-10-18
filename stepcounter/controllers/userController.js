@@ -12,6 +12,6 @@ router.post('/login',(req,res) => {
         res.send(data)
     });
     
-})
+});
 
 module.exports=router;
