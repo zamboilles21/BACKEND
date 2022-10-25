@@ -1,34 +1,33 @@
-body {
-    background-color: silver;
+body{
+    background-color: palegoldenrod;
+    padding: auto;
+    margin: auto;
 }
-
-.container {
-    background-color: white;
-    box-shadow: 0 0 10px gray;
-    padding: 10px;
+.container{
+    background-color: aqua;
+    box-shadow: 1 1 12px blueviolet;
 }
-
-header {
-    background-color: slategray;
+header{
+    background-color: darkblue;
     text-align: center;
     font-size: 200%;
+    padding: auto;
     height: 150px;
+    margin: auto;
+    color: aliceblue;
     line-height: 150px;
-    color: white;
-    text-shadow: 0 0 3px black;
+    text-shadow: 0 0 4px brown;
 }
-
-footer {
-    background-color: black;
-    color: white;
+footer{
+    background-color: saddlebrown;
     text-align: center;
-    font-size: 80%;
-    letter-spacing: 3px;
-    padding: 8px;
-}
-
-main {
-    padding: 10px 0;
+    font-size: 69%;
+    letter-spacing: 4px;
+    height: 100px;
+    margin: auto;
+    color: aliceblue;
+    line-height: 150px;
+    text-shadow: 2 2 4px magenta;
 }
 
 .menu {
