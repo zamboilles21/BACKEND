@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const ejs = require('ejs');
 const config = require('../config.js');
+const moment = require('moment');
+
 
 router.get('/', (req, res) => {
     if (!req.app.locals.isMessage) {
@@ -53,7 +55,6 @@ router.get('/passmod', (req, res) => {
     }
 });
 
-
 router.get('/logout', (req, res) => {
     req.app.locals.message = 'You are logged out!';
     req.app.locals.messagetype = 'success';
@@ -64,6 +65,21 @@ router.get('/logout', (req, res) => {
     ejs.renderFile('views/index.ejs', { app: config.appconfig, err: req.app.locals }, (err, data) => {
         res.send(data)
     });
+});
+
+router.get('/newdata', (req, res) => {
+    if (req.session.loggedIn) {
+        if (!req.app.locals.isMessage) {
+            req.app.locals.message = '';
+        }
+
+        ejs.renderFile('views/newdata.ejs', { app: config.appconfig, err: req.app.locals, user: req.session, toDay: moment(new Date()).format('YYYY-MM-DD') }, (err, data) => {
+            req.app.locals.isMessage = false;
+            res.send(data)
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 module.exports = router;

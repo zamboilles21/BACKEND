@@ -8,10 +8,10 @@
             <%- include('nav') %>
         </aside>
         <section class="col-md-8">
+            <h3>Password change</h3>
+            <hr>
             <%- include('message') %>
-                <h3>Password change</h3>
-                <hr>
-                <form action="/passmod" method="post">
+                <form action="/users/passmod" method="post" class="col-lg-8 col-xl-6">
                     <div class="mb-3">
                         <label for="oldpass" class="form-label">Old password</label>
                         <input type="password" class="form-control" name="oldpass">
