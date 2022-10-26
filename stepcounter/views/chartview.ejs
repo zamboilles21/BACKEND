@@ -35,7 +35,16 @@
                     {
                         // Change type to "doughnut", "line", "splineArea", etc.
                         type: "column",
-                        dataPoints: points 
+                        dataPoints: [
+                            <% 
+                            for (let i = 0; i < records.length; i++) {
+                                let year=moment(records[i].date).format('YYYY');
+                                let month=moment(records[i].date).format('MM')-1;
+                                let day=moment(records[i].date).format('DD');
+                                
+                            }
+                            %>
+                        ] 
                     }]
                 });
                     
