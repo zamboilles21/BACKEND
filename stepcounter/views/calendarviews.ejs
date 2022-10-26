@@ -1,0 +1,26 @@
+<%- include('header') %>
+    
+    
+<div class="row">
+    <aside class="col-md-4">
+        <h3 class="p-3">
+            <%= user.loggedUser %>
+        </h3>
+        <%- include('nav') %>
+    </aside>
+    <section class="col-md-8">
+        <h3>Chart view</h3>
+        <hr>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+              });
+              calendar.render();
+            });
+      
+          </script>
+          <div id='calendar'></div>
+        <%- include('footer') %>

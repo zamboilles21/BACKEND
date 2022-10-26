@@ -119,5 +119,23 @@ router.get('/chartview', (req, res) => {
         res.redirect('/');
     }
 });
+router.get('/calendarview', (req, res) => {
+    if (req.session.loggedIn) {
+
+        if (!req.app.locals.isMessage) {
+            req.app.locals.message = '';
+        }
+
+        pool.query(`SELECT * FROM stepdatas WHERE userID=? ORDER BY date DESC`, [req.session.loggedUserID], (err, results) => {
+
+            ejs.renderFile('views/calendarview.ejs', { app: config.appconfig, err: req.app.locals, user: req.session, toDay: moment(new Date()).format('YYYY-MM-DD'), records: results, moment }, (err, data) => {
+                req.app.locals.isMessage = false;
+                res.send(data)
+            });
+        });
+    } else {
+        res.redirect('/');
+    }
+});
 
 module.exports = router;
