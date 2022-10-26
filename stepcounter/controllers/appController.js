@@ -3,7 +3,9 @@ const router = express.Router();
 const ejs = require('ejs');
 const config = require('../config.js');
 const moment = require('moment');
-
+var mysql = require('mysql');
+const { createPool } = require('mysql');
+var pool = mysql.createPool(config.dbconfig);
 
 router.get('/', (req, res) => {
     if (!req.app.locals.isMessage) {
@@ -76,6 +78,24 @@ router.get('/newdata', (req, res) => {
         ejs.renderFile('views/newdata.ejs', { app: config.appconfig, err: req.app.locals, user: req.session, toDay: moment(new Date()).format('YYYY-MM-DD') }, (err, data) => {
             req.app.locals.isMessage = false;
             res.send(data)
+        });
+    } else {
+        res.redirect('/');
+    }
+});
+router.get('/tableview', (req, res) => {
+    if (req.session.loggedIn) {
+
+        if (!req.app.locals.isMessage) {
+            req.app.locals.message = '';
+        }
+
+        pool.query(`SELECT * FROM stepdatas WHERE userID=? ORDER BY date DESC`, [req.session.loggedUserID], (err, results) => {
+
+            ejs.renderFile('views/table.ejs', { app: config.appconfig, err: req.app.locals, user: req.session, toDay: moment(new Date()).format('YYYY-MM-DD'), records: results, moment }, (err, data) => {
+                req.app.locals.isMessage = false;
+                res.send(data)
+            });
         });
     } else {
         res.redirect('/');
