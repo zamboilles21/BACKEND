@@ -1,6 +1,47 @@
 <%- include('header') %>
+    
+    
+<div class="row">
+    <aside class="col-md-4">
+        <h3 class="p-3">
+            <%= user.loggedUser %>
+        </h3>
+        <%- include('nav') %>
+    </aside>
+    <section class="col-md-8">
+        <h3>Chart view</h3>
+        <hr>
+        <div id="chartContainer"></div>
+<% 
+    let points=[];
+    records.().forEach(element => {
+        dataPoints.push{
+            {
+                x: new Date(element.date),
+                y:element.stepcount
+            }
+        }
+    });
+%> 
 
+        <script type="text/javascript">
 
-    <%- include('login') %>
-
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title:{
+                        text: "My First Chart in CanvasJS"              
+                    },
+                    data: [              
+                    {
+                        // Change type to "doughnut", "line", "splineArea", etc.
+                        type: "column",
+                        dataPoints: points 
+                    }]
+                });
+                    
+                
+                chart.render();
+            }
+            </script>
+            
         <%- include('footer') %>
