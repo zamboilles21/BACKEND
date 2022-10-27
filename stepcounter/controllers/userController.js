@@ -138,5 +138,47 @@ router.post('/passmod', (req, res) => {
         }
     }
 });
-
+router.post('/mod-user', (req,res)=>{
+    if (req.body.email==''||req.body.name==''||req.body.email==null||req.body.name==null){
+        req.app.locals.message = ["Empty fields"];
+        req.app.locals.type = "danger";
+        res.redirect('/mod-profile')
+    }
+    else {
+        connection.query('select * from users where email=?', [req.body.email], (err,data)=>{
+            if (err) res.status(500).send(err.sqlMessage);
+            if (data.length>0) {
+                if (req.session.loggedemail==data[0].email){
+                    connection.query('update users set name=?, email=? where ID=?', [req.body.name, req.body.email, req.session.loggedid], (err)=>{
+                        if (err) res.status(500).send(err.sqlMessage);
+                        else {
+                            req.app.locals.message = ['Successful modification!'];
+                            req.app.locals.type='success';
+                            req.session.loggedemail = req.body.email;
+                            req.session.loggeduser = req.body.name;
+                            res.redirect('/mod-profile');
+                        }
+                    })
+                }
+                else{
+                    req.app.locals.message = ['Someone is already registered with these!'];
+                    req.app.locals.type='danger';
+                    res.redirect('/mod-profile')
+                }
+            }
+            else {
+                connection.query('update users set name=?, email=? where ID=?', [req.body.name, req.body.email, req.session.loggedid], (err)=>{
+                    if (err) res.status(500).send(err.sqlMessage);
+                    else {
+                        req.app.locals.message = ['Successful modification!'];
+                        req.app.locals.type='success';
+                        req.session.loggedemail = req.body.email;
+                        req.session.loggeduser = req.body.name;
+                        res.redirect('/mod-profile');
+                    }
+                })
+            }
+        })
+    }
+})
 module.exports = router;

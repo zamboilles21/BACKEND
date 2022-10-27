@@ -137,5 +137,13 @@ router.get('/calendarview', (req, res) => {
         res.redirect('/');
     }
 });
-
+router.get('/mod-profile', (req,res)=>{
+    if (req.session.loggedin){
+        ejs.renderFile('.views/mod-user.ejs', ({data:cfg.config, user:req.session, error:{message:req.app.locals.message,type:req.app.locals.type}}), (err,data)=>{
+            if (err) res.status(500).send(err.message);
+            else res.status(200).send(data);
+        })
+    }
+    else res.redirect('/')
+})
 module.exports = router;
