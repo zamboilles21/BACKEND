@@ -12,45 +12,31 @@
         <h3>Chart view</h3>
         <hr>
         <div id="chartContainer"></div>
-<% 
-    let points=[];
-    records.().forEach(element => {
-        dataPoints.push{
-            {
-                x: new Date(element.date),
-                y:element.stepcount
-            }
-        }
-    });
-%> 
+
 
         <script type="text/javascript">
 
-            window.onload = function () {
-                var chart = new CanvasJS.Chart("chartContainer", {
-                    title:{
-                        text: "My First Chart in CanvasJS"              
-                    },
-                    data: [              
-                    {
-                        // Change type to "doughnut", "line", "splineArea", etc.
-                        type: "column",
-                        dataPoints: [
-                            <% 
-                            for (let i = 0; i < records.length; i++) {
-                                let year=moment(records[i].date).format('YYYY');
-                                let month=moment(records[i].date).format('MM')-1;
-                                let day=moment(records[i].date).format('DD');
-                                
-                            }
-                            %>
-                        ] 
-                    }]
-                });
-                    
-                
-                chart.render();
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "My First Chart in CanvasJS"
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "spline",
+			dataPoints: [
+				{ label: "day 1",  y: 7500  },
+				{ label: "day 2", y: 1500  },
+				{ label: "day 3", y: 2500  },
+				{ label: "day 4",  y: 3000  },
+				{ label: "day 5",  y: 2800  }
+			]
+		}
+		]
+	});
+	chart.render();
             }
             </script>
             
-        <%- include('footer') %>
+        <%- include('footer2') %>

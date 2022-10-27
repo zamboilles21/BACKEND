@@ -8,19 +8,31 @@
         </h3>
         <%- include('nav') %>
     </aside>
-    <section class="col-md-8">
-        <h3>Chart view</h3>
-        <hr>
-        <script>
-
-            document.addEventListener('DOMContentLoaded', function() {
-              var calendarEl = document.getElementById('calendar');
-              var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth'
-              });
-              calendar.render();
-            });
-      
-          </script>
+    <% let datas = [] 
+   records.forEach(element => {
+       datas.push({x:element.date, y:element.stepcount})
+   });
+%>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        themeSystem: 'bootstrap5',
+        headerToolbar: {
+            start: 'today prev,next', // will normally be on the left. if RTL, will be on the right
+            center: 'title',
+            end: 'dayGridMonth timeGridWeek listMonth' // will normally be on the right. if RTL, will be on the left
+        },
+        events: [
+        <% for (let i = 0; i < datas.length; i++){ %>
+                <%- `{title: '${datas[i].y} steps', start:${"\"" + (datas[i].x.toISOString().split('T')[0]+ "\"")}, backgroundColor:'#0d6efd'},`  %>
+            <% } %>
+        ]
+      });
+      calendar.render();
+    });
+  </script>
           <div id='calendar'></div>
         <%- include('footer') %>
