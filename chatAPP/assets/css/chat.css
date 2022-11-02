@@ -1,32 +1,35 @@
-body {
-    background-color: silver;
+body{
+    background-color: palegoldenrod;
+    padding: auto;
+    margin: auto;
 }
-
-.container {
-    background-color: white;
-    box-shadow: 0 0 10px gray;
-    padding: 10px;
+.container{
+    background-color: sienna;
+    box-shadow: 1 1 12px blueviolet;
 }
-
-header {
-    background-color: slategray;
+header{
+    background-color: goldenrod;
     text-align: center;
-    color: white;
-    text-shadow: 0 0 2px black;
     font-size: 200%;
-    line-height: 100px;
+    padding: auto;
+    height: 150px;
+    margin: auto;
+    color: aliceblue;
+    line-height: 150px;
+    text-shadow: 0 0 4px brown;
 }
-
-main {
-    padding: 10px;
-}
-
-footer {
-    background-color: black;
-    color: white;
+footer{
+    background-color: saddlebrown;
     text-align: center;
-    letter-spacing: 3px;
-    font-size: 80%;
+    font-size: 69%;
+    letter-spacing: 4px;
+    height: 100px;
+    margin: auto;
+    color: aliceblue;
+    line-height: 150px;
+    text-shadow: 2 2 4px magenta;
+}
+main{
     padding: 10px;
 }
 
