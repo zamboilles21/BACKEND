@@ -1,15 +1,15 @@
 const express = require('express');
-
+const app = express();
 const path = require('path');
 const ejs = require('ejs');
 const server=require('http').createServer(app);
 const socket=require('socket.io')(server);
 const config = require('./config.js');
-const app = express();
+
 
 
 app.get('/', (req, res) => {
-    ejs.renderFile('views/index.ejs', { config, hiba:message }, (err, data) => {
+    ejs.renderFile('/assets/views/index.ejs',(err, data) => {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -24,11 +24,7 @@ app.get('/', (req, res) => {
 app.use('/assets', express.static(path.join(__dirname + '/assets')));
 app.use('/views', express.static(path.join(__dirname + '/views')));
 app.use(express.urlencoded({ extended: true }));
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
+
 
 app.locals.message = '';
 app.locals.messagetype = 'danger';
