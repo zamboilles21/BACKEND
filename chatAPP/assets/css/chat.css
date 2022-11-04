@@ -1,0 +1,59 @@
+body{
+    background-color: palegoldenrod;
+    padding: auto;
+    margin: auto;
+}
+.container{
+    background-color: sienna;
+    box-shadow: 1 1 12px blueviolet;
+}
+header{
+    background-color: goldenrod;
+    text-align: center;
+    font-size: 200%;
+    padding: auto;
+    height: 150px;
+    margin: auto;
+    color: aliceblue;
+    line-height: 150px;
+    text-shadow: 0 0 4px brown;
+}
+footer{
+    background-color: saddlebrown;
+    text-align: center;
+    font-size: 69%;
+    letter-spacing: 4px;
+    height: 100px;
+    margin: auto;
+    color: aliceblue;
+    line-height: 150px;
+    text-shadow: 2 2 4px magenta;
+}
+main{
+    padding: 10px;
+}
+
+aside {
+    background-color: #efefef;
+}
+
+textarea {
+    height: 400px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.userList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.userList li {
+    padding: 10px;
+    border-bottom: 1px dotted black;
+}
+
+.userList li:first-child {
+    border-top: 1px dotted black;
+}

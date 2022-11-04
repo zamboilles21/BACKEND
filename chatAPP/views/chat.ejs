@@ -1,0 +1,32 @@
+<%- include('header') %>
+    <main class="row">
+        <section class="col-lg-8">
+            <h3 class="m-3">Csevegés -
+                <%= user.nickname %> (
+                    <%= user.roomname %> )
+            </h3>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Üzenetek" id="messageBox" readonly></textarea>
+                <label for="messageBox">Üzenetek</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Üzenet..." id="message">
+                <button class="btn btn-success" type="button" id="send">Küldés</button>
+            </div>
+
+        </section>
+        <aside class="col-lg-4">
+            <h3 class="m-3">Felhasználók</h3>
+            <ul class="userList mb-3">
+                <li>Felhasználó 1</li>
+                <li>Felhasználó 2</li>
+                <li>Felhasználó 3</li>
+            </ul>
+            <a href="/" class="btn btn-primary btn-lg">Kilépés a chat-ből</a>
+        </aside>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="./assets/js/client.js"></script>
+    </main>
+    <%- include('footer') %>
