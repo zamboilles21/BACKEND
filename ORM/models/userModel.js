@@ -2,7 +2,7 @@ module.exports=(sequelize, DataTypes)=>{
     const User = sequelize.define('User', {
         
         firstName: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
           
         },
         lastName: {
@@ -10,7 +10,7 @@ module.exports=(sequelize, DataTypes)=>{
           
         },
         age: {
-            type: DataTypes.INTERGER
+            type: DataTypes.INTEGER
             
           }
       }, {

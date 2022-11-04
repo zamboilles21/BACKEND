@@ -4,7 +4,7 @@ const sequelize = new Sequelize('2123szft_orm', 'root', '', {
     dialect: 'mysql'
   });
 
-  db.sequelize.sync();
+  
   const db={}
 
   db.sequelize=sequelize;
