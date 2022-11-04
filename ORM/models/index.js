@@ -9,6 +9,6 @@ const sequelize = new Sequelize('2123szft_orm', 'root', '', {
 
   db.sequelize=sequelize;
   db.models={};
-  db.models.User=require('./userModel')(sequelize, sequelize.DataTypes);
+  db.models.User=require('./userModel.js')(sequelize, sequelize.DataTypes);
 
   module.exports=db;
