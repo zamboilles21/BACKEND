@@ -54,3 +54,13 @@ textarea {
 .userList li:first-child {
     border-top: 1px dotted black;
 }
+.chat-message{
+    height: 200px;
+    background-color: beige;
+    border: 2px solid slategray;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    font: 1em sans-serif;
+    
+}
