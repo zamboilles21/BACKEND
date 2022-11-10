@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
         const users=getRoomUsers(session.roomName);
         io.to(session.roomName).emit('roomUsers',{
             room:session.roomName,
-            users:getCurrentUser
+            users:getRoomUsers(session.roomName)
         });
 
     })
