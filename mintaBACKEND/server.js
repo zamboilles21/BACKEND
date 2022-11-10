@@ -40,12 +40,19 @@ app.post('/:table',(req,res)=>{
     var table=req.params.table;
     var records=req.body;
     var str='null';
-
+    var str2='ID';
+    var fields=Object.keys(records);
     var values=Object.values(records);
-    console.log(records);
-    console.log(values);
+    
+    
+    values.forEach(value=>{
+        str += ",'" + value + "'"
+    })
+    fields.forEach(field=>{
+        str2 +="," + field
+    })
     //"INSERT INTO ${table} VALUES(${null, 'name', 'email', 'passwd')"
-    pool.query(`INSERT INTO ${table} VALUES(${str})`,(err,result)=>{
+    pool.query(`INSERT INTO ${table} (${str2}) VALUES(${str})`,(err,result)=>{
         if (err) {
             res.status(500).send(err);
         }else{
@@ -56,7 +63,33 @@ app.post('/:table',(req,res)=>{
 });
 
 //UPDATE RECORD
-app.patch('',(req,res)=>{});
+app.patch('/:table/:id',(req,res)=>{
+    var table=req.params.table;
+    var records=req.body;
+    var id=req.params.id;
+    var str='null';
+    
+    var fields=Object.keys(records);
+    var values=Object.values(records);
+    
+    for (let i = 0; i < fields.length; i++) {
+        str+=fields[i]+"='"+values[i]+"'";
+        if (i!=fields.length-1) {
+            str+=",";
+        }
+        
+    }
+    fields.forEach(item=>{
+        str += ",'" + item + "'"
+    })
+    pool.query(`UPDATE ${table} SET ${str}  WHERE ID=${id}`,(err,result)=>{
+        if (err) {
+            res.status(500).send(err);
+        }else{
+            res.status(200).send(result);
+        }
+    })
+});
 
 //DELETE ALL RECORDS
 app.delete('/:table/:id',(req,res)=>{
