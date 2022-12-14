@@ -10,12 +10,13 @@ const port = 5000;
 const token = process.env.TOKEN;
 const version = process.env.VERSION;
 const debug = process.env.DEBUG;
+const pug = require('pug');
+const compiledFunction = pug.compileFile('template.pug');
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/assets', express.static(path.join(__dirname + '/assets')));
-app.use('/views', express.static(path.join(__dirname + '/views')));
+
 
 // Image file Upload settings
 var storage = multer.diskStorage({
